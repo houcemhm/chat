@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "989506535482",
+    "project_id": "chat-hoss",
+    "storage_bucket": "chat-hoss.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989506535482:android:731fda6505be124723b503",
+        "android_client_info": {
+          "package_name": "com.example.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989506535482-r2d33kqhaeb5bq89t4p1g5ddlqtfvcf0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB04VvicaIwuyId-25dMx7aA2r7VeSh9Jc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989506535482-r2d33kqhaeb5bq89t4p1g5ddlqtfvcf0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
