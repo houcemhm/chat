@@ -22,6 +22,7 @@ class UserActif extends StatelessWidget {
           'id': id,
           'imageUrl': imageUrl,
           'username': username,
+          'isConnected': isConnected,
           'email': email,
         }),
         child: Column(

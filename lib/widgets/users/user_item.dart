@@ -16,13 +16,14 @@ class UserItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => Navigator.of(context).pushNamed(PrivateChatScreen.routeName,
-          arguments: {
-            'id': userID,
-            'imageUrl': imageUrl,
-            'username': username,
-            'email': email
-          }),
+      onTap: () => Navigator.of(context)
+          .pushNamed(PrivateChatScreen.routeName, arguments: {
+        'id': userID,
+        'imageUrl': imageUrl,
+        'username': username,
+        'isConnected': isConnected,
+        'email': email
+      }),
       leading: CircleAvatar(backgroundImage: NetworkImage(imageUrl)),
       title: Text(username),
       trailing: isConnected

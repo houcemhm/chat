@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:chat/screens/chat_screen.dart';
 import 'package:chat/screens/users_screen.dart';
 
+import '../widgets/helpers/dropdown_widget.dart';
 import 'home_screen.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _TabsScreenState extends State<TabsScreen> {
     _pages = [
       {
         'page': UsersScreen(),
-        'title': 'Friends',
+        'title': 'Active Now',
       },
       {
         'page': HomeScreen(),
@@ -29,7 +30,7 @@ class _TabsScreenState extends State<TabsScreen> {
       },
       {
         'page': ChatScreen(),
-        'title': 'Friends',
+        'title': 'Rooms',
       }
     ];
     super.initState();
@@ -47,37 +48,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(_pages[_selectPagePageIndex]['title'] as String),
         actions: [
-          DropdownButton(
-              icon: const Icon(
-                Icons.more_vert,
-                color: Colors.white,
-              ),
-              items: [
-                DropdownMenuItem(
-                  value: 'logout',
-                  child: Container(
-                    child: Row(
-                      children: const [
-                        Icon(Icons.exit_to_app),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Text('Logout')
-                      ],
-                    ),
-                  ),
-                )
-              ],
-              onChanged: (itmeIdentifier) async {
-                if (itmeIdentifier == 'logout') {
-                  final user = FirebaseAuth.instance.currentUser;
-                  FirebaseFirestore.instance
-                      .collection('users')
-                      .doc(user!.uid)
-                      .update({"isConnected": false});
-                  await FirebaseAuth.instance.signOut();
-                }
-              })
+          DropDownWidget(),
         ],
       ),
       body: _pages[_selectPagePageIndex]['page'] as Widget,
@@ -87,17 +58,17 @@ class _TabsScreenState extends State<TabsScreen> {
         items: [
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).bottomAppBarTheme.color,
-            icon: Icon(Icons.category),
-            label: 'Users',
+            icon: const Icon(Icons.people),
+            label: 'Active Now',
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).bottomAppBarTheme.color,
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).bottomAppBarTheme.color,
-            icon: Icon(Icons.chat),
+            icon: const Icon(Icons.chat),
             label: 'my room',
           ),
         ],

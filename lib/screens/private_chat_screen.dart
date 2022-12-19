@@ -11,7 +11,7 @@ import '../widgets/profile/profile.dart';
 
 class PrivateChatScreen extends StatefulWidget {
   const PrivateChatScreen({super.key});
-  static final routeName = "private-chat-screen";
+  static const routeName = "private-chat-screen";
   @override
   State<PrivateChatScreen> createState() => _PrivateChatScreenState();
 }
@@ -27,14 +27,14 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
 
   Widget build(BuildContext context) {
     final args =
-        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final id = args['id'];
     final imageUrl = args['imageUrl'];
     final nameuser = args['username'];
     final email = args['email'];
     final isConnected = args['isConnected'];
 
-    print(id);
+    print(isConnected);
     return Scaffold(
       appBar: AppBar(
         title: ListTile(
@@ -42,10 +42,10 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(50),
-                child: Image.network(imageUrl!,
+                child: Image.network(imageUrl as String,
                     height: 40, width: 40, fit: BoxFit.cover),
               ),
-              if (true)
+              if (isConnected as bool)
                 Positioned(
                   right: 0,
                   bottom: 0,
@@ -62,7 +62,7 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
                 )
             ],
           ),
-          title: Text(nameuser!),
+          title: Text(nameuser as String),
         ),
         actions: [
           IconButton(
@@ -110,7 +110,7 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
       body: Container(
         child: Column(
           children: [
-            Expanded(child: PrivateMessages(id!)),
+            Expanded(child: PrivateMessages(id as String)),
             PrivateNewMessage(id),
           ],
         ),

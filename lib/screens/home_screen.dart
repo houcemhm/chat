@@ -11,13 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [
-          UsersActif(),
-          SizedBox(
-            height: 400,
-            child: Chats(),
-          )
-        ],
+        children: [UsersActif(), Expanded(child: Chats())],
       ),
     );
   }

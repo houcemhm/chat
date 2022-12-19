@@ -6,16 +6,13 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args =
-        ModalRoute.of(context)!.settings.arguments as Map<String, String?>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, Object?>;
     final id = args['id'];
     final imageUrl = args['imageUrl'];
     final nameuser = args['username'];
     final email = args['email'];
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.orange,
-        ),
         backgroundColor: Colors.orange,
         body: SafeArea(
             child: Column(
@@ -23,10 +20,10 @@ class Profile extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50.0,
-              backgroundImage: NetworkImage(imageUrl!),
+              backgroundImage: NetworkImage(imageUrl as String),
             ),
             Text(
-              nameuser!,
+              nameuser as String,
               style: TextStyle(
                 fontFamily: '36',
                 fontSize: 40.0,
@@ -50,7 +47,7 @@ class Profile extends StatelessWidget {
                   color: Colors.cyan[700],
                 ),
                 title: Text(
-                  email!,
+                  email as String,
                   style: TextStyle(
                     fontSize: 22.0,
                     color: Colors.black87,
